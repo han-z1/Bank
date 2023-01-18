@@ -1,0 +1,123 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <filter>
+    <filter-name>ExceptionFilter</filter-name>
+    <filter-class>org.bank.filter.ExceptionFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+	   <filter-name>ExceptionFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>org.bank.filter.AuthenticationFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+	   <filter-name>AuthenticationFilter</filter-name>
+	   <url-pattern>/api/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>AdminAuthenticationFilter</filter-name>
+    <filter-class>org.bank.filter.AuthenticationFilter</filter-class>
+    <init-param>
+		<param-name>isBankStaffAPI</param-name>
+		<param-value>true</param-value>
+	</init-param>
+  </filter>
+
+  <filter-mapping>
+	   <filter-name>AdminAuthenticationFilter</filter-name>
+	   <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>UserRegister</servlet-name>
+    <servlet-class>org.bank.servlet.UserRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserRegister</servlet-name>
+    <url-pattern>/user/register</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>org.bank.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/user/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UserDetails</servlet-name>
+    <servlet-class>org.bank.servlet.UserDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserDetails</servlet-name>
+    <url-pattern>/api/user</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UPIDetails</servlet-name>
+    <servlet-class>org.bank.servlet.UPIDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UPIDetails</servlet-name>
+    <url-pattern>/api/upi</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TransactDetails</servlet-name>
+    <servlet-class>org.bank.servlet.TransactServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransactDetails</servlet-name>
+    <url-pattern>/admin/transact</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>BeneficiaryDetails</servlet-name>
+    <servlet-class>org.bank.servlet.BeneficiaryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BeneficiaryDetails</servlet-name>
+    <url-pattern>/api/beneficiary</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TransferDetails</servlet-name>
+    <servlet-class>org.bank.servlet.TransferServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransferDetails</servlet-name>
+    <url-pattern>/api/transfer</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>StatementDetails</servlet-name>
+    <servlet-class>org.bank.servlet.StatementDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StatementDetails</servlet-name>
+    <url-pattern>/api/statement</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>SessionValid</servlet-name>
+    <servlet-class>org.bank.servlet.SessionValidServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionValid</servlet-name>
+    <url-pattern>/api/session/validate</url-pattern>
+  </servlet-mapping>
+
+</web-app>
